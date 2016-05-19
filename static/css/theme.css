@@ -1,0 +1,22 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+  font-family: 'Indie Flower', cursive;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 40px;
+  font-family: 'Indie Flower', cursive;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+  font-family: 'Indie Flower', cursive;
+}
+

@@ -1,0 +1,49 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-header">
+    <h1>Database used for visualization</h1>
+    <p>http://archive.ics.uci.edu/ml/datasets/</p>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>School</th>
+        <th>Sex</th>
+        <th>Age</th>
+        <th>Adress</th>
+        <th>Family Size</th>
+        <th>Travel Time</th>
+        <th>Study Time</th>
+        <th>Want higher education?</th>
+        <th>Free time</th>
+        <th>Daily Alc</th>
+        <th>Weekend Alc</th>
+        <th>G3</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for element in formdata %}
+    <tr>
+        <td>{{ element.ID }}</td>
+        <td>{{ element.SCHOOL }}</td>
+        <td>{{ element.SEX }}</td>
+        <td>{{ element.AGE }}</td>
+        <td>{{ element.ADRESS }}</td>
+        <td>{{ element.FAMSIZE }}</td>
+        <td>{{ element.TRAVELTIME }}</td>
+        <td>{{ element.STUDYTIME }}</td>
+        <td>{{ element.HIGHER }}</td>
+        <td>{{ element.FREETIME }}</td>
+        <td>{{ element.DALC }}</td>
+        <td>{{ element.WALC }}</td>
+        <td>{{ element.G3 }}</td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,56 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Results</h1>
+    <p>Total number of students in GP School and MS School who filled the form</p>
+    <div id="chart_div"></div>
+    <p></p>
+    <p>Time spent by each student of MS on:</p>
+    <div id="chart_divMS"></div>
+    <p></p>
+    <p>
+        Time spent by each students of GP on:
+    </p>
+    <div id="chart_divGP"></div>
+</div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+  google.setOnLoadCallback(MSdrawChart);
+  google.setOnLoadCallback(GPdrawChart);
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Question');
+    data.addColumn('number', 'Total answer');
+    data.addRows( {{ data|tojson }} );
+    var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div'));
+    chart.draw(data, {legend: 'none', vAxis: {baseline: 0} });
+  }
+    function MSdrawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Question');
+    data.addColumn('number', 'Average answer');
+    data.addRows( {{ MSdata|tojson }} );
+    var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_divMS'));
+    chart.draw(data, {legend: 'none', vAxis: {baseline: 0} });
+  }
+
+    function GPdrawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Question');
+    data.addColumn('number', 'Average answer');
+    data.addRows( {{ GPdata|tojson }} );
+    var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_divGP'));
+    chart.draw(data, {legend: 'none', vAxis: {baseline: 0} });
+  }
+</script>
+
+{% endblock %}
